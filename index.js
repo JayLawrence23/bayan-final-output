@@ -15,6 +15,27 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// Redirect to specific house
+app.get('/a/:listing', (req, res) => {
+  const { listing } = req.params;
+  if(data){
+      res.render('subreddit', { ...data });
+  } else {
+      res.render('notfound');
+  }
+})
+
+// add new house
+app.post('/listhouse', (req, res) => {
+  console.log(req.body);
+  res.redirect('/list');
+})
+
+app.get('/lists', (req, res) => {
+  res.render('/');
+})
+
+
 // server listening
 app.listen(PORT, () => {
   console.log(`The app start on http://localhost:${PORT}`);
